@@ -1,3 +1,3 @@
 == Kanban
 
-Learning Ruby on Rails. This application is a simple implementation of Kanban system. Your team mates can assign tasks to 4 different categories.
+Learning Ruby on Rails. This application is a simple implementation of Kanban system. Your team mates can assign tasks to 4 different categories. Application uses Devise gem to sign up users.
