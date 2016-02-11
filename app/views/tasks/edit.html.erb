@@ -1,2 +1,12 @@
-<h1>Tasks#edit</h1>
-<p>Find me in app/views/tasks/edit.html.erb</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Edit task</h1>
+      <%= bootstrap_form_for [@team, @task] do |f| %>
+        <%= f.text_field :name %>
+        <%= f.text_area :description %>
+        <%= f.submit "Edit" %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,4 @@
 class TeamsController < ApplicationController
-  include TeamsHelper
   before_action :authenticate_user!
 
   def new
@@ -14,7 +13,6 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     @team.users << current_user
-    owner?(@team)
     if @team.save
       flash[:success] = "#{@team.name} team create"
       redirect_to @team
@@ -26,17 +24,17 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
-    owner?(@team)
+    current_user.part_of?(@team)
   end
 
   def edit
     @team = Team.find(params[:id])
-    owner?(@team)
+    current_user.part_of?(@team)
   end
 
   def update
     @team = Team.find(params[:id])
-    owner?(@team)
+    current_user.part_of?(@team)
     if @team.update_attributes(team_params)
       flash[:success] = "Team #{@team.name} edited"
       redirect_to @team
