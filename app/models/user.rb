@@ -5,5 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :team
-  has_many :tasks, through: :team
+  has_many :tasks
 end
