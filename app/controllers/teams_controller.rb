@@ -22,6 +22,17 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
   end
 
+  def update
+    @team = Team.find(params[:id])
+    if @team.update_attributes(team_params)
+      flash[:success] = "Team #{@team.name} edited"
+      redirect_to @team
+    else
+      flash[:danger] = 'Team not edited'
+      render 'edit'
+    end
+  end
+
   private
 
   def team_params
