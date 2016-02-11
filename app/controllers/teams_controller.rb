@@ -3,12 +3,17 @@ class TeamsController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @team = Team.new
+    if current_user.team
+      flash[:danger] = 'You already belong to a team'
+      redirect_to root_path
+    else
+      @team = Team.new
+    end
   end
 
   def create
     @team = Team.new(team_params)
-    current_user.team = @team
+    @team.users << current_user
     owner?(@team)
     if @team.save
       flash[:success] = "#{@team.name} team create"
@@ -43,7 +48,7 @@ class TeamsController < ApplicationController
 
   private
 
-  def team_params
-    params.require(:team).permit(:name)
-  end
+    def team_params
+      params.require(:team).permit(:name)
+    end
 end
