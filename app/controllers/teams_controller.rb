@@ -7,16 +7,20 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
     if @team.save
       flash[:success] = "#{@team.name} team create"
-      redirect_to root_path
+      redirect_to @team
     else
       flash[:danger] = 'Team not created'
       render 'new'
     end
   end
 
+  def show
+    @team = Team.find(params[:id])
+  end
+
   private
 
   def team_params
-    params.require(:team).premit(:name)
+    params.require(:team).permit(:name)
   end
 end
