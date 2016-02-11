@@ -1,0 +1,11 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Edit your team</h1>
+      <%= bootstrap_form_for @team do |f| %>
+        <%= f.text_field :name %>
+        <%= f.submit "Edit team" %>
+      <% end %>
+    </div>
+  </div>
+</div>
