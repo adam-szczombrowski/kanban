@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'tasks/new'
+
+  get 'tasks/create'
+
+  get 'tasks/edit'
+
+  get 'tasks/update'
+
+  get 'tasks/show'
+
+  get 'tasks/index'
+
   devise_for :users
   resources :teams
   # The priority is based upon order of creation: first created -> highest priority.
