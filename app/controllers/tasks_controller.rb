@@ -11,7 +11,7 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.team_id = current_user.team.id
     if @task.save
-      redirect_to root_path
+      redirect_to @task
     else
       flash[:danger] = 'Task not saved'
       render 'new'
