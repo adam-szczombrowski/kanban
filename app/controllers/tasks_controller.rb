@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  include ApplicationHelper
   before_action :authenticate_user!
   before_action :correct_team, only: [:edit, :show, :update]
 

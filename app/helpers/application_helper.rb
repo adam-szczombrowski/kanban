@@ -1,6 +1,5 @@
 module ApplicationHelper
-
-  def right_nav_display
-
+  def current_team
+    return current_user.team if current_user
   end
 end
