@@ -5,5 +5,7 @@ class Task < ActiveRecord::Base
   validates :name, presence: true
   validates :description, presence: true
 
-
+  def part_of?(team)
+    team.tasks.include?(self)
+  end
 end

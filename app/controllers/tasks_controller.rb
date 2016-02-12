@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
+  before_action :correct_team, only: [:edit, :show, :update]
 
   def new
     @team = current_team
@@ -8,9 +9,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    @task.user = current_user
-    @task.team_id = params[:team_id]
-    belongs?(@task, current_team)
+    @task.team_id = current_user.team.id
     if @task.save
       redirect_to root_path
     else
@@ -20,13 +19,9 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @team = current_team
-    @task = Task.find(params[:id])
-    belongs?(@task, current_team)
   end
 
   def update
-    @task = Task.find(params[:id])
     if @task.update_attributes(task_params)
       flash[:success] = 'Task updated'
       redirect_to @task
@@ -37,24 +32,23 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = Task.find(params[:id])
-    belongs?(@task, current_team)
   end
 
   def index
-    @tasks = Task.where(team_id: current_team.id)
+    @tasks = Task.where(team_id: current_user.team.id)
   end
 
   private
 
-    def task_params
-      params.require(:task).permit(:name, :description)
-    end
+  def task_params
+    params.require(:task).permit(:name, :description)
+  end
 
-    def belongs?(task, team) #where this function should be ?
-      unless task.team == team
-        flash[:danger] = 'This is not your teams task'
-        redirect_to root_path
-      end
+  def correct_team
+    @task = Task.find(params[:id])
+    unless @task.part_of?(current_user.team)
+      flash[:danger] = 'This is not your teams task'
+      redirect_to root_path
     end
+  end
 end
