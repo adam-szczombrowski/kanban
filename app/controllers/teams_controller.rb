@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
   before_action :authenticate_user!
+  before_action :correct_user, only: [:show, :edit, :update]
 
   def new
     if current_user.team
@@ -23,18 +24,18 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.find(params[:id])
-    part_of?(current_user, @team)
+  #  @team = Team.find(params[:id])
+  #  part_of?(current_user, @team)
   end
 
   def edit
-    @team = Team.find(params[:id])
-    part_of?(current_user, @team)
+  #  @team = Team.find(params[:id])
+  #  part_of?(current_user, @team)
   end
 
   def update
-    @team = Team.find(params[:id])
-    part_of?(current_user, @team)
+  #  @team = Team.find(params[:id])
+  #  part_of?(current_user, @team)
     if @team.update_attributes(team_params)
       flash[:success] = "Team #{@team.name} edited"
       redirect_to @team
@@ -50,10 +51,11 @@ class TeamsController < ApplicationController
       params.require(:team).permit(:name)
     end
 
-  def part_of?(user, team) #where this function should be?
-    unless user.team == team
-      flash[:danger] = 'This is not your team'
-      redirect_to root_path
+    def correct_user
+      @team = Team.find(params[:id])
+      unless @team.has_user?(current_user)
+        flash[:danger] = 'This is not your team'
+        redirect_to root_path
+      end
     end
-  end
 end
