@@ -24,6 +24,7 @@ class TeamsController < ApplicationController
   end
 
   def show
+    @tasks = Task.where(team_id: @team.id)
   end
 
   def edit
