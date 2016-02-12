@@ -24,17 +24,17 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
-    current_user.part_of?(@team)
+    part_of?(current_user, @team)
   end
 
   def edit
     @team = Team.find(params[:id])
-    current_user.part_of?(@team)
+    part_of?(current_user, @team)
   end
 
   def update
     @team = Team.find(params[:id])
-    current_user.part_of?(@team)
+    part_of?(current_user, @team)
     if @team.update_attributes(team_params)
       flash[:success] = "Team #{@team.name} edited"
       redirect_to @team
@@ -49,4 +49,11 @@ class TeamsController < ApplicationController
     def team_params
       params.require(:team).permit(:name)
     end
+
+  def part_of?(user, team) #where this function should be?
+    unless user.team == team
+      flash[:danger] = 'This is not your team'
+      redirect_to root_path
+    end
+  end
 end

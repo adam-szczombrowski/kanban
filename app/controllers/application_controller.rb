@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
-    def current_team
+    def current_team #is this the right place for this function ?
       if current_user
         return current_user.team
       end
