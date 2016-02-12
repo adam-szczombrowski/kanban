@@ -1,2 +1,19 @@
-<h1><%= @team.name %></h1>
-<%= render partial: 'tasks/task', collection: @tasks %>
+<div class="container-fluid central">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1><%= @team.name %></h1>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-sm-12">
+      <%= render partial: 'tasks/task', collection: @tasks %>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-sm-12">
+      <%= link_to 'New task', new_team_task_path(@team) %>
+    </div>
+  </div>
+</div>
