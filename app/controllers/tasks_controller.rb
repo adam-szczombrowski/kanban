@@ -35,7 +35,7 @@ class TasksController < ApplicationController
   end
 
   def index
-    @tasks = Task.where(team_id: current_user.team.id)
+    @tasks = Task.where(team_id: current_team.id)
   end
 
   private
