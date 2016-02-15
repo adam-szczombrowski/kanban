@@ -20,21 +20,27 @@
 
 $(document).ready(function(){
 
+  console.log('ready');
   $(".task").draggable({
     containment: ".tab",
     handle: "p",
     revert: "invalid",
     helper:"clone"
-    // scope:
   });
-
   $(".drag").droppable({
     accept: ".task",
-    // activeClass:
     tolerance: "pointer",
     drop: function(event,ui){
+      var task_id = ui.draggable.attr('id');
+      var new_cat = $(this).attr('id');
+      var send_url = '/tasks/' + task_id + '/change';
+      console.log(new_cat);
       ui.draggable.detach().appendTo($(this));
+      $.ajax({
+        method: 'put',
+        url: send_url,
+        data: { category: new_cat }
+      });
     }
   });
-
 });

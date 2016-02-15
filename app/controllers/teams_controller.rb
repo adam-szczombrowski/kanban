@@ -27,7 +27,7 @@ class TeamsController < ApplicationController
     @tasksc1 = Task.where(team_id: @team.id, category: 'C1')
     @tasksc2 = Task.where(team_id: @team.id, category: 'C2')
     @tasksc3 = Task.where(team_id: @team.id, category: 'C3')
-    @tasksc3 = Task.where(team_id: @team.id, category: 'C4')
+    @tasksc4 = Task.where(team_id: @team.id, category: 'C4')
   end
 
   def edit

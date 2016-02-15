@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'pages#index'
 
+  put '/tasks/:id/change' => 'tasks#change'
+
   get '/contact' => 'pages#contact'
   get '/about' => 'pages#about'
   # Example of regular route:

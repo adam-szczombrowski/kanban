@@ -23,6 +23,14 @@ class TasksController < ApplicationController
   def edit
   end
 
+  def change
+    @task = Task.find(params[:id])
+    @task.update_attributes(category: params[:category])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def update
     if @task.update_attributes(task_params)
       flash[:success] = 'Task updated'
