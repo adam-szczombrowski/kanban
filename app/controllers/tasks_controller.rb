@@ -11,6 +11,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.team_id = current_user.team.id
+    @task.category = 'C1'
     if @task.save
       redirect_to team_path(current_team)
     else

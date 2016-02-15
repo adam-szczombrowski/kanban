@@ -5,9 +5,22 @@
     </div>
   </div>
   <hr>
-  <div class="row">
-    <div class="col-sm-12">
-      <%= render partial: 'tasks/task', collection: @tasks %>
+  <div class="row tab">
+    <div class="col-sm-12 col-md-3 drag" >
+      <h1>Requested</h1>
+      <%= render partial: 'tasks/task', collection: @tasksc1 %>
+    </div>
+    <div class="col-sm-12 col-md-3 drag" >
+      <h1>Development</h1>
+      <%= render partial: 'tasks/task', collection: @tasksc2 %>
+    </div>
+    <div class="col-sm-12 col-md-3 drag" >
+      <h1>Testing</h1>
+      <%= render partial: 'tasks/task', collection: @tasksc3 %>
+    </div>
+    <div class="col-sm-12 col-md-3 drag" >
+      <h1>Done</h1>
+      <%= render partial: 'tasks/task', collection: @tasksc4 %>
     </div>
   </div>
   <hr>

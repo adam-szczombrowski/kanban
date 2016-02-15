@@ -12,6 +12,29 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+
+$(document).ready(function(){
+
+  $(".task").draggable({
+    containment: ".tab",
+    handle: "p",
+    revert: "invalid",
+    helper:"clone"
+    // scope:
+  });
+
+  $(".drag").droppable({
+    accept: ".task",
+    // activeClass:
+    tolerance: "pointer",
+    drop: function(event,ui){
+      ui.draggable.detach().appendTo($(this));
+    }
+  });
+
+});
