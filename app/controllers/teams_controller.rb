@@ -43,6 +43,16 @@ class TeamsController < ApplicationController
     end
   end
 
+  def index
+    @teams = Team.all
+  end
+
+  def join
+    current_user.team = Team.find(params[:id])
+    current_user.save
+    redirect_to team_path current_user.team
+  end
+
   private
 
   def team_params

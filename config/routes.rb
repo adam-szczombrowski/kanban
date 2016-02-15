@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   root 'pages#index'
+  get '/teams/:id/join' => 'teams#join', as: :join_team
 
   put '/tasks/:id/change' => 'tasks#change'
 

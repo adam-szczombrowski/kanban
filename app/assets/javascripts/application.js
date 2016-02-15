@@ -17,16 +17,15 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-
 $(document).ready(function(){
 
   console.log('ready');
   $(".task").draggable({
     containment: ".tab",
-    handle: "p",
     revert: "invalid",
     helper:"clone"
   });
+
   $(".drag").droppable({
     accept: ".task",
     tolerance: "pointer",

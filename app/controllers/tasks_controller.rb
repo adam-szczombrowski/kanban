@@ -21,6 +21,7 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @team = current_team
   end
 
   def change
@@ -34,7 +35,7 @@ class TasksController < ApplicationController
   def update
     if @task.update_attributes(task_params)
       flash[:success] = 'Task updated'
-      redirect_to team_task_path(@task)
+      redirect_to team_task_path(current_team,@task)
     else
       flash[:danger] = 'Error'
       redirect_to root_path

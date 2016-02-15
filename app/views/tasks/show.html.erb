@@ -1,7 +1,8 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-12 col-md-offset-3 col-md-6 central">
       <%= render @task %>
+      <%= link_to 'Edit task', edit_team_task_path(current_team, @task), class: 'btn btn-default' %>
     </div>
   </div>
 </div>

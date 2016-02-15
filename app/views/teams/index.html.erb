@@ -1,0 +1,3 @@
+<% @teams.each do |t| %>
+  <p><%= t.name %><%= link_to 'Join', join_team_path(t)%></p>
+<% end %>
