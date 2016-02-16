@@ -13,6 +13,7 @@ class TasksController < ApplicationController
     @task.team_id = current_user.team.id
     @task.category = 'C1'
     if @task.save
+      flash[:success] = 'Task created!'
       redirect_to team_path(current_team)
     else
       flash[:danger] = 'Task not saved'
