@@ -14,8 +14,8 @@ Rails.application.routes.draw do
 
   put '/tasks/:id/change' => 'tasks#change'
 
-  get '/contact' => 'pages#contact'
-  get '/about' => 'pages#about'
+  get '/contact' => 'pages#contact', as: :contact
+  get '/about' => 'pages#about', as: :about
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

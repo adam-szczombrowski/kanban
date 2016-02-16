@@ -1,9 +1,8 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-12 col-md-offset-4 col-md-4 central">
-
       <% if current_user %>
-        <%= link_to 'Join the team!', teams_path %> or <%= link_to 'Create a team', new_team_path %>
+        <h1><%= link_to 'Join the existing team', teams_path %></h1> or <h1> <%= link_to 'Create a team', new_team_path %> </h1>
       <% else %>
         <h1>Join Kanban today!</h1>
         <p>Kanban is super easy tool to boost your productivity with Kanban method. Find more by signing in below!</p>

@@ -1,3 +1,19 @@
-<% @teams.each do |t| %>
-  <p><%= t.name %><%= link_to 'Join', join_team_path(t)%></p>
-<% end %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6 col-md-offset-4 col-md-2 central">
+      <% @teams.each do |t| %>
+        <p><%= t.name %></p>
+      <% end %>
+    </div>
+    <div class="col-sm-6 col-md-2 central">
+      <% @teams.each do |t| %>
+        <p><%= link_to 'Join', join_team_path(t)%></p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
