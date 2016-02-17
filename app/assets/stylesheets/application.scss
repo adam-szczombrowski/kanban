@@ -50,9 +50,9 @@
 }
 
 .social a{
-  border: medium solid #16454c;
+  border: medium solid #9c1737;
   border-radius: 5px;
-  color: #16454c;
+  color: #9c1737;
   padding: 15px;
 }
 
@@ -63,4 +63,33 @@
 .about {
   margin-top: 50px;
   font-size: 120%;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: white;
+  font-weight: bold;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+  color: white;
+  font-weight: bold;
+
+}
+
+.navbar-default .navbar-brand {
+  color: white;
+  font-weight: bold;
+}
+
+.navbar-default .navbar-brand:hover {
+  color: white;
+  font-weight: bold;
+}
+
+.navbar-default {
+  background-color: #9c1737;
+}
+
+.navbar-default .navbar-nav > .active > a {
+  background-color: transparent;
 }

@@ -17,9 +17,15 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-$(document).ready(function(){
+$(function() {
+  initPage();
+});
 
-  console.log('ready');
+$(window).bind('page:change', function() {
+  initPage();
+});
+
+function initPage() {
   $(".task").draggable({
     containment: ".tab",
     revert: "invalid",
@@ -42,4 +48,4 @@ $(document).ready(function(){
       });
     }
   });
-});
+}

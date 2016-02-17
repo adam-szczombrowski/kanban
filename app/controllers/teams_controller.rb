@@ -15,7 +15,7 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
     @team.users << current_user
     if @team.save
-      flash[:success] = "#{@team.name} team create"
+      flash[:success] = "#{@team.name} team created"
       redirect_to @team
     else
       flash[:danger] = 'Team not created'

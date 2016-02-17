@@ -11,13 +11,13 @@
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navi">
         <% if current_user && current_user.team %>
           <li><%= link_to current_team.name, current_team %></li>
           <li><%= link_to 'Add task', new_team_task_path(current_team) %></li>
         <% end %>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right navi">
         <li><%= link_to 'About', about_path %></li>
         <li><%= link_to 'Contact', contact_path %></li>
         <% if current_user %>
